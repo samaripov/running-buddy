@@ -20,7 +20,9 @@ export default class extends Controller {
 
   elapsedTime() {
     this.timeValue = this.timeValue + 10;
-    this.element.textContent = this.formatTime(this.timeValue);
+    const formatedTime = this.formatTime(this.timeValue);
+    this.element.textContent = formatedTime;
+    document.title = formatedTime;
   }
 
   formatTime(ms) {
