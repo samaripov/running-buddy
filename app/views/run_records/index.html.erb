@@ -1,4 +1,5 @@
-<h1>00:00:00:00</h1>
-<%= link_to "New Run", [:new, :run_record] %>
-
+<%= link_to "New Run", [:new, :run_record], data: {turbo_frame: dom_id(RunRecord.new)} %>
+<%= turbo_frame_tag RunRecord.new%>
+<hr>
+<h1>Past Runs</h1>
 <%= render @run_records %>
