@@ -1,6 +1,6 @@
 class RunRecordsController < ApplicationController
   def index
-    @run_records = RunRecord.all
+    @run_records = RunRecord.all.reverse
   end
   def show
     @run_record  = RunRecord.find(params[:id])

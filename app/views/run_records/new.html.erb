@@ -6,7 +6,7 @@
       <p>Distance: <span data-geolocation-target="distance">00.00km</span></p>
       <p>Pace: 6min/km</p>
     </div>
-    <%= link_to "End Run", root_path%>
+    <%= link_to "Cancel Run", root_path%>
 
     <form data-controller="create-run-record" data-action="submit->create-run-record#submit">
       <input type="hidden" data-run-timer-target="time">

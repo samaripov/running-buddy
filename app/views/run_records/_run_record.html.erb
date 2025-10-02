@@ -1,0 +1,13 @@
+<main>
+  <p>Time: <%= run_record.time %></p>
+  <p>Distance: <%= run_record.distance%></p>
+  <p>Pace: <%= run_record.pace%></p>
+  <%# 
+  <%# <%= RunPath.where(run_record_id: run_record.id).to_json %> 
+  <div data-controller="load-map-path" 
+      data-load-map-path-path-value="<%= RunPath.where(run_record_id: run_record.id).pluck(:latitude, :longitude) %>"
+      data-load-map-path-map-id-value="map_<%= run_record.id %>">
+    <div id="map_<%= run_record.id %>" style="height: 500px; width: 500px;"></div>
+  </div>
+  <hr>
+</main>

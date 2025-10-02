@@ -13,5 +13,8 @@ application.register("geolocation", GeolocationController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LoadMapPathController from "./load_map_path_controller"
+application.register("load-map-path", LoadMapPathController)
+
 import RunTimerController from "./run_timer_controller"
 application.register("run-timer", RunTimerController)
