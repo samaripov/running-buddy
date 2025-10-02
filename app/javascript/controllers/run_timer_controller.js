@@ -2,13 +2,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="run-timer"
 export default class extends Controller {
-  static values = { timeValue: Number }
-
   connect() {
     console.log("RUN-TIMER CONNECTED SUCCESSFULLY!");
-    if (this.timeValue === undefined || this.timeValue === null || isNaN(this.timeValue)) {
-      this.timeValue = 0;
-    }
+    this.timeValue = 0;
     this.timerInterval = setInterval(() => {
       this.elapsedTime();
     }, 10);

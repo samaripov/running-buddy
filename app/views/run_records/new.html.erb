@@ -1,3 +1,10 @@
-<% content_for :title, "Starting run..." %>
-<h1><div data-controller="run-timer">00:00:00:00</div></h1>
-<%= link_to "End Run", root_path%>
+<main data-controller="geolocation" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <% content_for :title, "Starting run..." %>
+  <h1><div data-controller="run-timer">00:00:00:00</div></h1>
+  <div>
+    <p>Distance: 0.0km</p>
+    <p>Pace: 6min/km</p>
+  </div>
+  <%= link_to "End Run", root_path%>
+  <div id="map" style="height: 80vh; width: 80vw;"></div>
+</main>
