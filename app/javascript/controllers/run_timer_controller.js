@@ -5,9 +5,19 @@ export default class extends Controller {
   connect() {
     console.log("RUN-TIMER CONNECTED SUCCESSFULLY!");
     this.timeValue = 0;
+    this.interval = 10;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.startTimer.bind(this),
+        this.showError
+      );
+    }
+  }
+
+  startTimer() {
     this.timerInterval = setInterval(() => {
       this.elapsedTime();
-    }, 10);
+    }, this.interval);
   }
 
   disconnect() {
@@ -15,10 +25,11 @@ export default class extends Controller {
   }
 
   elapsedTime() {
-    this.timeValue = this.timeValue + 10;
+    this.timeValue = this.timeValue + this.interval;
     const formatedTime = this.formatTime(this.timeValue);
     this.element.textContent = formatedTime;
     document.title = formatedTime;
+    return this.timeValue;
   }
 
   formatTime(ms) {
@@ -34,5 +45,22 @@ export default class extends Controller {
     const pad = (num, length = 2) => String(num).padStart(length, "0");
     
     return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}:${pad(milliseconds)}`;
+  }
+
+  showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        console.error("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.error("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        console.error("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.error("An unknown error occurred.");
+        break;
+    }
   }
 }

@@ -2,7 +2,7 @@
   <% content_for :title, "Starting run..." %>
   <h1><div data-controller="run-timer">00:00:00:00</div></h1>
   <div>
-    <p>Distance: 0.0km</p>
+    <p>Distance: <span data-geolocation-target="distance">00.00km</span></p>
     <p>Pace: 6min/km</p>
   </div>
   <%= link_to "End Run", root_path%>
