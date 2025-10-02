@@ -54,19 +54,10 @@ export default class extends Controller {
     }
   }
   startLocationUpdate() {
-    //Update location and map
-    let timePassed = 0;
-    const interval = 100;
+    const interval = 2500;
     this.timerInterval = setInterval(() => {
-      timePassed += interval;
-      //Update at each step
       this.getLocation();
-
-      //Only update the map every 5 seconds
-      if(timePassed >= 5000) {
-        this.drawPath();
-        timePassed = 0;
-      }
+      this.drawPath();
     }, interval);
   }
 

@@ -29,6 +29,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         console.log("Success: ", data);
+        window.location.href = "/";
       })
       .catch(error => {
         console.log("Error: ", error);
