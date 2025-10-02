@@ -2,9 +2,10 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="geolocation"
 export default class extends Controller {
-  static targets = ["distance"];
-
   connect() {
+    //Make self visible to other controllers
+    this.element[this.identifier] = this
+
     //Set up the map and the location marker
     this.mapValue = L.map("map").setView([51.505, -0.09], 13);
     this.marker = L.marker([51.505, -0.09]).addTo(this.mapValue).bindPopup("You are here!").openPopup();
@@ -97,8 +98,6 @@ export default class extends Controller {
     console.log(coord1);
     console.log(coord2);
     this.distance += this.haversineDistance(coord1, coord2);
-    this.distanceTarget.textContent = "";
-    this.distanceTarget.textContent = `${parseFloat(this.distance).toFixed(2)}km`;
   }
 
   haversineDistance(coord1, coord2) {

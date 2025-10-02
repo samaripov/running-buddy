@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CreateRunRecordController from "./create_run_record_controller"
+application.register("create-run-record", CreateRunRecordController)
+
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 

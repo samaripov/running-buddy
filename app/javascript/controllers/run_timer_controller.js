@@ -2,8 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="run-timer"
 export default class extends Controller {
+  static targets = ["timer"];
+
   connect() {
-    console.log("RUN-TIMER CONNECTED SUCCESSFULLY!");
+    //Make self visible to other controllers
+    this.element[this.identifier] = this
+
     this.timeValue = 0;
     this.interval = 10;
     if (navigator.geolocation) {
@@ -27,9 +31,8 @@ export default class extends Controller {
   elapsedTime() {
     this.timeValue = this.timeValue + this.interval;
     const formatedTime = this.formatTime(this.timeValue);
-    this.element.textContent = formatedTime;
     document.title = formatedTime;
-    return this.timeValue;
+    this.timerTarget.textContent = formatedTime;
   }
 
   formatTime(ms) {

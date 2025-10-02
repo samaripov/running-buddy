@@ -1,10 +1,20 @@
-<main data-controller="geolocation" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<main id="geolocation" data-controller="geolocation" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
   <% content_for :title, "Starting run..." %>
-  <h1><div data-controller="run-timer">00:00:00:00</div></h1>
-  <div>
-    <p>Distance: <span data-geolocation-target="distance">00.00km</span></p>
-    <p>Pace: 6min/km</p>
+  <div id="run-timer" data-controller="run-timer">
+    <h1 data-run-timer-target="timer">00:00:00:00</h1>
+    <div>
+      <p>Distance: <span data-geolocation-target="distance">00.00km</span></p>
+      <p>Pace: 6min/km</p>
+    </div>
+    <%= link_to "End Run", root_path%>
+
+    <form data-controller="create-run-record" data-action="submit->create-run-record#submit">
+      <input type="hidden" data-run-timer-target="time">
+      <input type="hidden" data-geolocation-target="distance">
+      <input type="hidden" data-geolocation-target="coordinates">
+      <button type="submit">Finish Run</button>
+    </form>
   </div>
-  <%= link_to "End Run", root_path%>
+
   <div id="map" style="height: 80vh; width: 80vw;"></div>
 </main>
